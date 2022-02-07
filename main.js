@@ -7,21 +7,11 @@ let goBtnEl = document.getElementById("go");
 let menuEl = document.getElementById("menu");
 
 // Global Variable
-let grades = [60, 70, 45, 20, 40, 90, 100, 30, 45, 75, 40, 80];
+let grades = [60, 70, 80, 65, 90, 83];
 let maxGrade = 100; // grade values should be b/t 0 and max
 
 // Display Data
 drawArray();
-
-function drawArray() {
-  let outputStr = "";
-  let divHeight;
-  for (let i = 0; i < grades.length; i++) {
-    divHeight = (grades[i] / maxGrade) * 600; // Scale grades to fit in array visualizer container
-    outputStr += `<div style="height:${divHeight}px"></div>`;
-  }
-  containerEl.innerHTML = outputStr;
-}
 
 // Main Menu & Go Button
 goBtnEl.addEventListener("click", mainMenu);
@@ -49,8 +39,6 @@ function mainMenu() {
     increaseGradesBy10();
   } else if (selection === "decrease10") {
     decreaseGradesBy10();
-  } else if (selection === "remove50") {
-    removeGradesBelow50();
   }
 
   // Redraw array to show any changes
@@ -105,7 +93,14 @@ function decreaseGradesBy10() {
   outputEl.innerHTML = "Decrease all grades by 10%";
 }
 
-function removeGradesBelow50() {
-  // Remove all grades that are below 50.
-  outputEl.innerHTML = "Remove grades below 50";
+
+// Function to draw current state of grades array
+function drawArray() {
+  let outputStr = "";
+  let divHeight;
+  for (let i = 0; i < grades.length; i++) {
+    divHeight = (grades[i] / maxGrade) * 600; // Scale grades to fit in array visualizer container
+    outputStr += `<div style="height:${divHeight}px"></div>`;
+  }
+  containerEl.innerHTML = outputStr;
 }
