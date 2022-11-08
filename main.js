@@ -57,7 +57,7 @@ function firstTo40() {
 function lastTo50() {
   // Set the grade of the last student to 50.
   outputEl.innerHTML = "Last grade to 50";
-  grades[grades.length] = 50;
+  grades[grades.length - 1] = 50;
 }
 
 function randomTo100() {
